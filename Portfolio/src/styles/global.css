@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gorditas-regular {
+    font-family: "Gorditas", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.gorditas-bold {
+    font-family: "Gorditas", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    background: linear-gradient(135deg, #383838, #000000);
+    color: #e0e0e0;
+    font-family: "Gorditas", serif;
+    font-weight: 400;
+    font-style: normal;
+    overflow: hidden;
+}
+
+.app-container {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.horizontal-container {
+    display: flex;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.horizontal-container>section {
+    min-width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.horizontal-container::-webkit-scrollbar {
+    height: 12px;
+}
+
+.horizontal-container::-webkit-scrollbar-thumb {
+    background: #00ff88;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #00ff88;
+}
