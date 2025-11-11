@@ -1,0 +1,45 @@
+portfolio-luiz/
+├── public/
+│   ├── favicon.ico
+│   └── assets/               # imagens estáticas que não precisam de import
+│       ├── profile.jpg
+│       └── icons/
+├── src/
+│   ├── assets/               # imagens que você vai importar no JS
+│   │   └── logo.svg
+│   ├── components/           # componentes reutilizáveis
+│   │   ├── layout/
+│   │   │   ├── Header.jsx
+│   │   │   ├── Navbar.jsx
+│   │   │   └── Footer.jsx
+│   │   ├── ui/
+│   │   │   ├── Button.jsx
+│   │   │   ├── Card.jsx
+│   │   │   ├── NeonBox.jsx
+│   │   │   └── SkillTag.jsx
+│   │   └── sections/         # ← SEÇÕES DO SCROLL HORIZONTAL
+│   │       ├── HomeSection.jsx
+│   │       ├── AboutSection.jsx
+│   │       ├── SkillsSection.jsx
+│   │       ├── ProjectsSection.jsx
+│   │       └── ContactSection.jsx
+│   ├── pages/
+│   │   └── Home.jsx          # página principal (vai importar todas as sections)
+│   ├── styles/
+│   │   ├── global.css
+│   │   ├── variables.css     # suas cores neon, fontes, etc.
+│   │   └── components/       # CSS específicos (opcional)
+│   │       ├── header.css
+│   │       └── neon.css
+│   ├── hooks/
+│   │   └── useHorizontalScroll.js  # hook customizado pro scroll
+│   ├── data/
+│   │   ├── skills.js         # array de hard/soft skills
+│   │   ├── projects.js
+│   │   └── socialLinks.js
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── vite.config.js
+├── package.json
+└── README.md

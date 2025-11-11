@@ -1,0 +1,70 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.nav-container {
+    position: fixed;
+    margin: 30px auto;
+    width: 50%;
+    padding: 1rem 2rem;
+    background: #252525;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    animation: ledGlow 2.5s infinite alternate;
+}
+
+.nav-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -50%;
+    width: 200%;
+    height: 3px;
+    background: linear-gradient(90deg, #00ffff, #278CFF, #00ffff);
+    animation: ledLine 3s linear infinite;
+    filter: drop-shadow(0 0 6px #278CFF);
+}
+
+@keyframes ledGlow {
+    0% {
+        box-shadow: 0 0 2px #278CFF, 0 0 5px #278CFF, 0 0 10px #278CFF;
+    }
+
+    100% {
+        box-shadow: 0 0 2px #00FFFF, 0 0 5px #278CFF, 0 0 10px #278CFF;
+    }
+}
+
+@keyframes ledLine {
+    0% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar-links li {
+    cursor: pointer;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.navbar-links li:hover {
+    color: #278CFF;
+    transform: scale(1.1);
+}

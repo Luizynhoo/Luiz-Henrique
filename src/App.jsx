@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useHorizontalScroll } from './hooks/useHorizontalScroll';
 import Navbar from './components/layout/Navbar';
+import Footer from "./components/layout/Footer";
 import HomeSection from './components/sections/HomeSection';
 // import AboutSection from './components/sections/AboutSection';
 // import SkillsSection from './components/sections/SkillsSection';
@@ -22,6 +23,7 @@ function App() {
         <SkillsSection />
         <ProjectsSection />
         <ContactSection /> */}
+        
       </div>
     </div>
   );  
