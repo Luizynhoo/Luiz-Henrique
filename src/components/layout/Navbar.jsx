@@ -1,17 +1,25 @@
 import '../../styles/components/navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ scrollRef }) => {
 
-    const Navbar = () => {
-        const scrollSection = (id) => {
-            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    const scrollSection = (id) => {
+        const section = document.getElementById(id);
+        const container = scrollRef?.current;
+
+        if (section && container) {
+            const sectionLeft = section.offsetLeft;
+            container.scrollTo({
+                left: sectionLeft,
+                behavior: 'smooth'
+            });
         }
-    }
+    };
+
     return (
         <nav className='navbar'>
             <div className='nav-container'>
                 <ul className='navbar-links'>
-                    <li onClick={() => scrollSection("home")}>Inicio</li>
+                    <li onClick={() => scrollSection("home")}>Início</li>
                     <li onClick={() => scrollSection("sobre")}>Sobre</li>
                     <li onClick={() => scrollSection("skills")}>Skills</li>
                     <li onClick={() => scrollSection("projects")}>Projetos</li>
@@ -19,7 +27,7 @@ const Navbar = () => {
                 </ul>
             </div>
         </nav>
-    )
-}
+    );
+};
 
 export default Navbar;

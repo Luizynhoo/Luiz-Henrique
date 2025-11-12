@@ -1,9 +1,8 @@
 import { useRef } from 'react';
 import { useHorizontalScroll } from './hooks/useHorizontalScroll';
 import Navbar from './components/layout/Navbar';
-import Footer from "./components/layout/Footer";
 import HomeSection from './components/sections/HomeSection';
-// import AboutSection from './components/sections/AboutSection';
+import AboutSection from './components/sections/AboutSection.jsx';
 // import SkillsSection from './components/sections/SkillsSection';
 // import ProjectsSection from './components/sections/ProjectsSection';
 // import ContactSection from './components/sections/ContactSection';
@@ -15,12 +14,12 @@ function App() {
 
   return (
     <div className="app-container">
-      <Navbar /> 
+      <Navbar scrollRef={scrollRef} />
       
       <div ref={scrollRef} className="horizontal-container">
-        <HomeSection />
-        {/* <AboutSection />
-        <SkillsSection />
+        <HomeSection/>
+        <AboutSection/>
+        {/* <SkillsSection />
         <ProjectsSection />
         <ContactSection /> */}
         

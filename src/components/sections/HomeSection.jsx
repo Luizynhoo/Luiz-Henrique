@@ -3,7 +3,7 @@ import profile from "../../assets/luiz.jpg";
 import { ReactTyped } from "react-typed";
 import Footer from "../layout/Footer";
 
-const HomeSection = () => {
+const HomeSection =  () => {
     return (
         <section id="home" className="section-home">
             <div className="home-content">
@@ -20,7 +20,7 @@ const HomeSection = () => {
                 </h1>
 
                 <div className="home-buttons">
-                    <button className="btn-primary">Entrar em Contato</button>
+                    <button className="btn-primary">Enztrar em Contato</button>
                     <button className="btn-secondary">Download CV</button>
                 </div>
             </div>
