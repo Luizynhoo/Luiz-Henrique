@@ -9,7 +9,7 @@
     margin: 30px auto;
     width: 50%;
     padding: 1rem 2rem;
-    background: #252525;
+    background: var(--background-);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
@@ -60,11 +60,17 @@
 
 .navbar-links li {
     cursor: pointer;
-    color: #e0e0e0;
+    color: var(--cor2-);
     transition: all 0.3s ease;
 }
 
 .navbar-links li:hover {
-    color: #278CFF;
+    color: var(--cor1-);
     transform: scale(1.1);
 }
+
+.navbar-links li.active {
+    color: var(--cor1-);
+    transform: scale(1.1);
+}
+

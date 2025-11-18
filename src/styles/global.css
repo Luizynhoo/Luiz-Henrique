@@ -1,7 +1,13 @@
+@import "./variables.css";
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html{
+  cursor: none !important;
 }
 
 .gorditas-regular {
@@ -18,7 +24,7 @@
 
 body {
     background: linear-gradient(135deg, #383838, #000000);
-    color: #e0e0e0;
+    color: var(--cor2-);
     font-family: "Gorditas", serif;
     font-weight: 400;
     font-style: normal;
@@ -27,6 +33,7 @@ body {
 
 .app-container {
     height: 100vh;
+    width: 100vw;
     overflow: hidden;
 }
 
@@ -50,11 +57,57 @@ body {
 }
 
 .horizontal-container::-webkit-scrollbar {
+    display: none;
     height: 12px;
 }
 
 .horizontal-container::-webkit-scrollbar-thumb {
-    background: #00ff88;
+    background: var(--cor1-);
     border-radius: 6px;
-    box-shadow: 0 0 10px #00ff88;
+    box-shadow: 0 0 10px var(--cor1-);
+}
+
+/* Cursor principal */
+.cursor {
+  position: fixed;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--cor1-);
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease-out, background 0.15s;
+  box-shadow: 0 0 6px var(--cor1-), 0 0 12px #00d9ff66;
+}
+
+/* Anel externo */
+.cursor-outline {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--cor1-);
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s cubic-bezier(.2,.9,.2,1), background 0.2s;
+  box-shadow: 0 0 10px rgba(0,217,255,0.15), 0 0 24px rgba(39,140,255,0.12);
+}
+
+/* Glow Neon */
+.dragging-cursor .cursor-outline {
+  transform: translate(-50%, -50%) scale(0.6);
+  background: rgba(0,217,255,0.06);
+}
+.dragging-cursor .cursor {
+  transform: translate(-50%, -50%) scale(1.4);
+}
+
+a:hover ~ .cursor,
+button:hover ~ .cursor,
+.navbar-links li:hover ~ .cursor {
+  transform: translate(-50%, -50%) scale(1.6);
+  background-color: #fff;
+  box-shadow: 0 0 12px #fff, 0 0 24px #00d9ff66;
 }
