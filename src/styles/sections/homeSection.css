@@ -126,25 +126,3 @@
     }
 }
 
-.scroll-hint a {
-    position: absolute;
-    top: 140px;
-    right: 40px;
-    color: var(--cor1-);
-    text-decoration: none;
-    opacity: 0;
-    font-size: 1rem;
-    animation: blink 2s infinite;
-}
-
-@keyframes blink {
-
-    0%,
-    100% {
-        opacity: 0.7;
-    }
-
-    50% {
-        opacity: 0.3;
-    }
-}

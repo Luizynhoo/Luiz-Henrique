@@ -2,32 +2,7 @@ import "../../styles/sections/homeSection.css";
 import profile from "../../assets/luiz.jpg";
 import { ReactTyped } from "react-typed";
 
-const HomeSection = () => {
-
-    const goToNextSection = () => {
-        const container = scrollRef.current;
-        if (!container) return;
-
-
-        const sections = Array.from(container.children);
-
-        const currentScroll = container.scrollLeft;
-
-        const currentIndex = sections.findIndex(sec => {
-            return sec.offsetLeft <= currentScroll + 10 &&
-                sec.offsetLeft + sec.offsetWidth > currentScroll + 10;
-        });
-
-        const nextIndex = currentIndex + 1;
-
-        if (nextIndex < sections.length) {
-            container.scrollTo({
-                left: sections[nextIndex].offsetLeft,
-                behavior: "smooth"
-            });
-        }
-    };
-
+const HomeSection = ({ goToNextSection }) => {
 
     return (
         <section id="home" className="section-home">
@@ -54,8 +29,8 @@ const HomeSection = () => {
                 <img src={profile} alt="Luiz" />
             </div>
 
-            <div className="scroll-hint">
-                <a href="#sobre">→ Proxima Sessão</a>
+            <div className="scroll-hint" onClick={goToNextSection}>
+                → Proxima Sessão
             </div>
 
         </section>
