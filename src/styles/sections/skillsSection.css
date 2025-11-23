@@ -18,9 +18,9 @@
   margin: 0;
 }
 
-.title a{
-    color: var(--cor1-);
-    margin-bottom: 10px;
+.title a {
+  color: var(--cor1-);
+  margin-bottom: 10px;
 }
 
 .skills-toc li {
@@ -62,15 +62,15 @@
   color: #444;
 }
 
-.skills-toc li.active > a {
+.skills-toc li.active>a {
   color: #fff;
 }
 
-.skills-toc li.active > a::after {
+.skills-toc li.active>a::after {
   color: #888;
 }
 
-.skills-toc li.active > .sub a {
+.skills-toc li.active>.sub a {
   color: #eee;
 }
 
@@ -91,4 +91,21 @@
 
 .skills-content p {
   color: #ccc;
+}
+
+.skills-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+.skill-group {
+  width: 70%;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
 }

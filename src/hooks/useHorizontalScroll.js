@@ -13,7 +13,7 @@ export function useHorizontalScroll(ref) {
       }
     };
 
-    // --- DRAG COM MOUSE ---
+    //DRAG COM MOUSE
     let isDown = false;
     let startX;
     let scrollLeftStart;
@@ -43,7 +43,6 @@ export function useHorizontalScroll(ref) {
       el.scrollLeft = scrollLeftStart - walk;
     };
 
-    // --- TOUCH (CELULAR / TABLET) ---
     let touchStartX = 0;
     let touchScrollStart = 0;
 
@@ -58,7 +57,6 @@ export function useHorizontalScroll(ref) {
       el.scrollLeft = touchScrollStart - walk;
     };
 
-    // --- EVENTOS ---
     el.addEventListener("wheel", handleWheel, { passive: false });
 
     el.addEventListener("mousedown", handleMouseDown);
