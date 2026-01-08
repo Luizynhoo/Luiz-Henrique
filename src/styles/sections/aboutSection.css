@@ -16,13 +16,14 @@
 }
 
 .xp-container {
-  background: #2e2e2e;
+  background: rgba(30, 30, 35, 0.6);
   padding: 2rem 3rem;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 25px rgba(0, 130, 255, 0.3);
 }
 

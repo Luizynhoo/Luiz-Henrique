@@ -1,7 +1,10 @@
+import { ChevronDown } from "lucide-react";
+
 export const skillsData = [
   {
     id: "skills-code-craft",
-    title: "Code & Craft",
+    title: "Hard Skills",
+    icon: ChevronDown,
     items: [
       { id: "skills-front", label: "FrontEnd" },
       { id: "skills-back", label: "BackEnd" },
@@ -12,14 +15,15 @@ export const skillsData = [
   },
   {
     id: "skills-vibe-drive",
-    title: "Vibe & Drive",
+    title: "Soft Skills",
+    icon: null,
   },
 ];
 
 export const fullSkillData = [
   {
     id: "skills-code-craft",
-    title: "Code & Craft",
+    title: "Hard Skills",
     items: [
       {
         category: "BackEnd",
@@ -71,7 +75,7 @@ export const fullSkillData = [
 
   {
     id: "skills-vibe-drive",
-    title: "Vibe & Drive",
+    title: "Soft Skills",
     items: [
       {
         category: "Colaboração",

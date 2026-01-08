@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { act, useState } from "react";
 import { skillsData, fullSkillData } from "../../data/skills";
 import "../../styles/sections/skillsSection.css";
 
@@ -31,34 +31,49 @@ const SkillsSection = () => {
                                             setActiveGroup(group.id);
                                             setActiveCategory(null);
                                         }}
+                                        className={activeGroup === group.id ? "active" : ""}
                                     >
-                                        {group.title}
+                                        <span>{group.title}</span>
+                                        {group.icon && (
+                                            <group.icon
+                                                className={`chevron ${activeGroup === group.id ? "expanded" : ""
+                                                    }`}
+                                                size={18}
+                                            />
+                                        )}
                                     </a>
                                 </div>
 
                                 {/* SUBCATEGORIAS */}
                                 {group.items && (
-                                    <ul className="sub">
-                                        {group.items.map((item) => (
-                                            <li key={item.id}>
-                                                <a
-                                                    onClick={() =>
-                                                        setActiveCategory(item.label)
-                                                    }
-                                                >
-                                                    {item.label}
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    <div
+                                        className={`submenu-wrapper ${group.id === activeGroup ? "open" : ""
+                                            }`}
+                                    >
+                                        <ul className="sub">
+                                            {group.items.map((item) => (
+                                                <li key={item.id}>
+                                                    <a
+                                                        onClick={() => setActiveCategory(item.label)}
+                                                        className={activeCategory === item.label ? "active" : ""}
+                                                    >
+                                                        {item.label}
+                                                    </a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 )}
+
+
                             </li>
                         ))}
                     </ul>
                 </aside>
 
                 {/* CONTEÚDO PRINCIPAL */}
-                <div className="skills-content">
+                <div className={`skills-content ${activeGroup === "skills-code-craft" ? "theme-blue" : "theme-purple"
+                    }`}>
                     <h2>{selectedGroup.title}</h2>
 
                     <div className="skill-items">
