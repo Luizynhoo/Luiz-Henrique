@@ -208,9 +208,9 @@
 
 .skill-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));  
   margin-top: 32px;
+  max-width: 80rem;
 }
 
 .skill-category {
@@ -220,6 +220,7 @@
   border: 1px solid rgba(148, 163, 184, 0.1);
   backdrop-filter: blur(16px);
   transition: all 0.3s ease;
+  max-width: 250px;
 }
 
 
@@ -277,6 +278,10 @@
 }
 
 .theme-purple .skill-category h3 {
+  color: #c084fc;
+}
+
+.theme-purple h2 {
   color: #c084fc;
 }
 

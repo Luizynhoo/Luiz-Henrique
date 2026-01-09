@@ -2,7 +2,7 @@ import { act, useState } from "react";
 import { skillsData, fullSkillData } from "../../data/skills";
 import "../../styles/sections/skillsSection.css";
 
-const SkillsSection = () => {
+const SkillsSection = ({ goToNextSection }) => {
     const [activeGroup, setActiveGroup] = useState("skills-code-craft");
     const [activeCategory, setActiveCategory] = useState(null);
 
@@ -93,6 +93,10 @@ const SkillsSection = () => {
                     </div>
                 </div>
 
+            </div>
+
+            <div className="scroll-hint" onClick={goToNextSection}>
+                → Proxima Sessão
             </div>
         </section>
     );

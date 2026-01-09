@@ -8,7 +8,7 @@ import Navbar from './components/layout/Navbar';
 import HomeSection from './components/sections/HomeSection';
 import AboutSection from './components/sections/AboutSection.jsx';
 import SkillsSection from './components/sections/SkillsSection';
-// import ProjectsSection from './components/sections/ProjectsSection';
+import ProjectsSection from './components/sections/ProjectsSection.jsx';
 // import ContactSection from './components/sections/ContactSection';
 
 import './styles/global.css';
@@ -53,6 +53,7 @@ const goToNextSection = () => {
         <HomeSection goToNextSection={goToNextSection} />
         <AboutSection goToNextSection={goToNextSection}/>
         <SkillsSection goToNextSection={goToNextSection}/>
+        <ProjectsSection goToNextSection={goToNextSection}/>
       </div>
     </div>
   );
