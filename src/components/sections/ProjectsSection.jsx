@@ -1,7 +1,7 @@
 import "../../styles/sections/projectsSection.css";
 import { useState } from "react";
-import {ProjectCard} from "../ui/ProjectCard";
-import {ProjectModal} from "../ui/ProjectModal";
+import { ProjectCard } from "../ui/ProjectCard";
+import { ProjectModal } from "../ui/ProjectModal";
 import { projects } from "../../data/projects";
 
 const ProjectsSection = ({ goToNextSection }) => {
@@ -10,16 +10,17 @@ const ProjectsSection = ({ goToNextSection }) => {
 
     return (
         <section id="projects" className="section-projects">
-            <h2>Todos os projetos</h2>
 
-            <div className="projects-grid">
-                {projects.map((project) => (
-                    <ProjectCard
-                        key={project.id}
-                        project={project}
-                        onClick={setSelectedProject}
-                    />
-                ))}
+            <div className="projects-scroll-container">
+                <div className="projects-grid">
+                    {projects.map((project) => (
+                        <ProjectCard
+                            key={project.id}
+                            project={project}
+                            onClick={setSelectedProject}
+                        />
+                    ))}
+                </div>
             </div>
 
             <ProjectModal

@@ -38,7 +38,7 @@ body {
 
 .horizontal-container>section {
   min-width: 100vw;
-  height: 80vh;
+  height: 75vh;
   scroll-snap-align: start;
   padding: 2rem;
   display: flex;
