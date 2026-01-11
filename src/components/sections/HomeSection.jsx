@@ -20,7 +20,12 @@ const HomeSection = ({ goToNextSection }) => {
                 </h1>
 
                 <div className="home-buttons">
-                    <button className="btn-primary">Entrar em Contato</button>
+                    <button className="btn-primary">
+                         <a href="mailto:lhenrique1804@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                            Entrar em Contato
+                        </a>
+                    </button>
+                    
                     <button className="btn-secondary">Download CV</button>
                 </div>
             </div>

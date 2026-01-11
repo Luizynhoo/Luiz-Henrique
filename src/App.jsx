@@ -9,7 +9,7 @@ import HomeSection from './components/sections/HomeSection';
 import AboutSection from './components/sections/AboutSection.jsx';
 import SkillsSection from './components/sections/SkillsSection';
 import ProjectsSection from './components/sections/ProjectsSection.jsx';
-// import ContactSection from './components/sections/ContactSection';
+import ContactSection from './components/sections/ContactSection.jsx';
 
 import './styles/global.css';
 
@@ -54,6 +54,7 @@ const goToNextSection = () => {
         <AboutSection goToNextSection={goToNextSection}/>
         <SkillsSection goToNextSection={goToNextSection}/>
         <ProjectsSection goToNextSection={goToNextSection}/>
+        <ContactSection />
       </div>
     </div>
   );

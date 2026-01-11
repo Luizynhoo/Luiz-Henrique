@@ -18,8 +18,26 @@
     padding: 32px;
     color: #fff;
     position: relative;
-    box-shadow: 0 30px 80px rgba(138, 43, 226, 0.45);
+    box-shadow: 0 30px 80px rgba(39, 140, 255, 0.443);
     animation: scaleIn 0.3s ease;
+}
+
+.modal-content img {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.25s ease;
 }
 
 .modal-content h2 {
@@ -46,13 +64,13 @@
     font-size: 0.85rem;
     text-decoration: none;
     color: #fff;
-    background: linear-gradient(135deg, #7b2cff, #9d5cff);
+    background: linear-gradient(135deg, #278CFF, #278CFF);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .modal-actions a:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
+    box-shadow: 0 10px 30px rgba(39, 140, 255, 0.443);
 }
 
 /* Animações */
