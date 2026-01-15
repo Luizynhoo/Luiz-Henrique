@@ -12,6 +12,10 @@ const ProjectsSection = ({ goToNextSection }) => {
         <section id="projects" className="section-projects">
 
             <div className="projects-scroll-container">
+                <div className="projects-title">
+                    <h2>Meus Projetos</h2>
+                </div>
+                
                 <div className="projects-grid">
                     {projects.map((project) => (
                         <ProjectCard

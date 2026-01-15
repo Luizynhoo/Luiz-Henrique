@@ -112,7 +112,7 @@ export const projects = [
         date: "12/2025",
         techs: ["Vite", "JavaScript", "CSS", "Data Processing"],
         description:
-            "Website institucional desenvolvido para a Azamara Brasil, em parceria com a R11 Travel, focado na divulgação e busca de cruzeiros. A aplicação conta com uma landing page de alto impacto visual e um motor de busca que permite filtrar cruzeiros por destino, navio e data de saída. Os resultados são exibidos em uma página dedicada, com listagem detalhada das saídas, valores, duração e informações do itinerário, utilizando dados atualizados diariamente a partir de um flat file. O fluxo de conversão é realizado via contato por e-mail para solicitação de reserva. O projeto foi desenvolvido com Vite, JavaScript e CSS, priorizando performance, usabilidade e experiência do usuário.",
+            "Website institucional desenvolvido para a Azamara Brasil, em parceria com a R11 Travel. A aplicação conta com uma landing page de alto impacto visual e um motor de busca que permite filtrar cruzeiros por destino, navio e data de saída. Os resultados são exibidos em uma página dedicada, com listagem detalhada das saídas, valores, duração e informações do itinerário, utilizando dados atualizados diariamente. O fluxo de conversão é realizado via contato por e-mail para solicitação de reserva. O projeto foi desenvolvido com Vite, JavaScript e CSS, priorizando performance, usabilidade e experiência do usuário.",
         github: "",
         live: "https://azamaracruises.com.br/",
     },  

@@ -18,13 +18,11 @@ const SkillsSection = ({ goToNextSection }) => {
         <section id="skills" className="skills-section">
             <div className="skills-layout">
 
-                {/* MENU LATERAL */}
                 <aside className="skills-toc">
                     <ul>
                         {skillsData.map((group) => (
                             <li key={group.id} className="has-sub">
 
-                                {/* GRUPO */}
                                 <div className="title">
                                     <a
                                         onClick={() => {
@@ -44,7 +42,6 @@ const SkillsSection = ({ goToNextSection }) => {
                                     </a>
                                 </div>
 
-                                {/* SUBCATEGORIAS */}
                                 {group.items && (
                                     <div
                                         className={`submenu-wrapper ${group.id === activeGroup ? "open" : ""
@@ -71,7 +68,6 @@ const SkillsSection = ({ goToNextSection }) => {
                     </ul>
                 </aside>
 
-                {/* CONTEÚDO PRINCIPAL */}
                 <div className={`skills-content ${activeGroup === "skills-code-craft" ? "theme-blue" : "theme-purple"
                     }`}>
                     <h2>{selectedGroup.title}</h2>

@@ -4,11 +4,21 @@
     display: flex;
     flex-direction: column;
 
-    background: radial-gradient(
-        circle at top,
-        rgba(47, 128, 237, 0.08),
-        transparent 60%
-    );
+    background: radial-gradient(circle at top,
+            rgba(47, 128, 237, 0.08),
+            transparent 60%);
+}
+
+.projects-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    h2 {
+        font-size: 2rem;
+        text-transform: capitalize;
+        color: #2f80ed;
+    }
 }
 
 
@@ -18,11 +28,9 @@
     padding: 32px 24px;
     padding-right: 16px;
 
-    background: linear-gradient(
-        180deg,
-        rgba(30, 30, 30, 0.85) 0%,
-        rgba(18, 18, 18, 0.85) 100%
-    );
+    background: linear-gradient(180deg,
+            rgba(30, 30, 30, 0.85) 0%,
+            rgba(18, 18, 18, 0.85) 100%);
 
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
@@ -59,11 +67,9 @@
 }
 
 .project-card {
-    background: linear-gradient(
-        180deg,
-        #1e1e1e,
-        #151515
-    );
+    background: linear-gradient(180deg,
+            #1e1e1e,
+            #151515);
 
     border-radius: 16px;
     overflow: hidden;

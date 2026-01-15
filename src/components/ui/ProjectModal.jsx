@@ -9,15 +9,16 @@ export function ProjectModal({ project, onClose }) {
                 <button className="modal-close" onClick={onClose}>×</button>
 
                 <img src={project.image} alt={project.title} className="modal-image" />
+                <div className="conteudo">
+                    <div className="modal-text">
+                        <h2>{project.title}</h2>
+                        <p>{project.description}</p>
+                    </div>
 
-                <div className="modal-text">
-                    <h2>{project.title}</h2>
-                    <p>{project.description}</p>
-                </div>
-
-                <div className="modal-actions">
-                    {project.github && <a href={project.github}>GitHub</a>}
-                    {project.live && <a href={project.live}>Ver projeto</a>}
+                    <div className="modal-actions">
+                        {project.github && <a href={project.github}>GitHub</a>}
+                        {project.live && <a href={project.live}>Ver projeto</a>}
+                    </div>
                 </div>
             </div>
         </div>
