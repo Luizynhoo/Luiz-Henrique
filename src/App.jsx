@@ -1,64 +1,53 @@
-import { useRef } from 'react';
-import { useHorizontalScroll } from './hooks/useHorizontalScroll';
-import { useCustomCursor } from './hooks/useCustomCursor.js';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import { useCustomCursor } from "./hooks/useCustomCursor.js";
 
+import Navbar from "./components/layout/Navbar";
 
-import Navbar from './components/layout/Navbar';
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import SkillsPage from "./pages/SkillsPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import ContactPage from "./pages/ContactPage";
 
-import HomeSection from './components/sections/HomeSection';
-import AboutSection from './components/sections/AboutSection.jsx';
-import SkillsSection from './components/sections/SkillsSection';
-import ProjectsSection from './components/sections/ProjectsSection.jsx';
-import ContactSection from './components/sections/ContactSection.jsx';
+import "./styles/global.css";
 
-import './styles/global.css';
-
-function App() {
-  const scrollRef = useRef(null);
-  useHorizontalScroll(scrollRef);
-  useCustomCursor();
-
-  const sections = ["home", "sobre", "skills", "projetos", "contato"];
-
-const goToNextSection = () => {
-  const container = scrollRef.current;
-  if (!container) return;
-
-  const sections = Array.from(container.children);
-
-  const currentScroll = container.scrollLeft;
-
-  const currentIndex = sections.findIndex((sec) => {
-    return (
-      sec.offsetLeft <= currentScroll + 10 &&
-      sec.offsetLeft + sec.offsetWidth > currentScroll + 10
-    );
-  });
-
-  const nextIndex = currentIndex + 1;
-
-  if (nextIndex < sections.length) {
-    container.scrollTo({
-      left: sections[nextIndex].offsetLeft,
-      behavior: "smooth",
-    });
-  }
-};
+function AnimatedRoutes() {
+  const location = useLocation();
 
   return (
-    <div className="app-container">
-      <Navbar scrollRef={scrollRef} />
-
-      <div ref={scrollRef} className="horizontal-container">
-        <HomeSection goToNextSection={goToNextSection} />
-        <AboutSection goToNextSection={goToNextSection}/>
-        <SkillsSection goToNextSection={goToNextSection}/>
-        <ProjectsSection goToNextSection={goToNextSection}/>
-        <ContactSection />
-      </div>
-    </div>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/sobre" element={<AboutPage />} />
+        <Route path="/skills" element={<SkillsPage />} />
+        <Route path="/projetos" element={<ProjectsPage />} />
+        <Route path="/contato" element={<ContactPage />} />
+        <Route path="*" element={<HomePage />} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 
+function App() {
+  useCustomCursor();
+
+  return (
+    <Router>
+      <div className="app-container">
+        <Navbar />
+
+        <div className="page-container">
+          <AnimatedRoutes />
+        </div>
+      </div>
+    </Router>
+  );
+}
 
 export default App;

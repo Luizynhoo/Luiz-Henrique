@@ -2,86 +2,75 @@ import { useEffect } from "react";
 
 export function useCustomCursor() {
   useEffect(() => {
-    // cria elementos se não existirem
-    let cursor = document.querySelector(".cursor");
-    let outline = document.querySelector(".cursor-outline");
+    const cursor = document.createElement("div");
+    cursor.classList.add("cursor");
+    document.body.appendChild(cursor);
 
-    if (!cursor) {
-      cursor = document.createElement("div");
-      cursor.className = "cursor";
-      document.body.appendChild(cursor);
-    }
-    if (!outline) {
-      outline = document.createElement("div");
-      outline.className = "cursor-outline";
-      document.body.appendChild(outline);
-    }
+    const cursorOutline = document.createElement("div");
+    cursorOutline.classList.add("cursor-outline");
+    document.body.appendChild(cursorOutline);
 
-    // esconder cursor nativo (opcional)
-    document.documentElement.style.cursor = "none";
-
-    // pos inicial
-    cursor.style.left = "0px";
-    cursor.style.top = "0px";
-    outline.style.left = "0px";
-    outline.style.top = "0px";
-
-    // smooth trailing (outline) settings
     let mouseX = 0;
     let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
     let outlineX = 0;
     let outlineY = 0;
-    const ease = 0.15;
 
     const handleMouseMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-
-      cursor.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
     };
 
     const animate = () => {
-      // aproxima o outline do cursor (delay)
-      outlineX += (mouseX - outlineX) * ease;
-      outlineY += (mouseY - outlineY) * ease;
-      outline.style.transform = `translate(${outlineX}px, ${outlineY}px) translate(-50%, -50%)`;
+      // Smooth follow para o cursor principal
+      cursorX += (mouseX - cursorX) * 0.3;
+      cursorY += (mouseY - cursorY) * 0.3;
+
+      // Smooth follow mais lento para o outline
+      outlineX += (mouseX - outlineX) * 0.1;
+      outlineY += (mouseY - outlineY) * 0.1;
+
+      cursor.style.left = cursorX + "px";
+      cursor.style.top = cursorY + "px";
+
+      cursorOutline.style.left = outlineX + "px";
+      cursorOutline.style.top = outlineY + "px";
+
       requestAnimationFrame(animate);
     };
 
-    // liga eventos
-    window.addEventListener("mousemove", handleMouseMove);
-    requestAnimationFrame(animate);
+    const handleMouseEnter = (e) => {
+      const wrapper = document.querySelector(".dragging-cursor");
+      if (wrapper) {
+        wrapper.classList.remove("dragging-cursor");
+      }
 
-    // mudar estado ao clicar / arrastar
-    const addDragging = () => {
-      document.documentElement.classList.add("dragging-cursor");
+      if (
+        e.target.tagName === "A" ||
+        e.target.tagName === "BUTTON" ||
+        e.target.classList.contains("interactive")
+      ) {
+        document.body.classList.add("dragging-cursor");
+      }
     };
-    const removeDragging = () => {
-      document.documentElement.classList.remove("dragging-cursor");
+
+    const handleMouseLeave = () => {
+      document.body.classList.remove("dragging-cursor");
     };
 
-    window.addEventListener("mousedown", addDragging);
-    window.addEventListener("mouseup", removeDragging);
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseover", handleMouseEnter);
+    document.addEventListener("mouseout", handleMouseLeave);
 
-    // para touch devices — exibe um cursor pequeno quando usuário toca (opcional)
-    const handleTouchMove = (e) => {
-      if (!e.touches || e.touches.length === 0) return;
-      const t = e.touches[0];
-      mouseX = t.clientX;
-      mouseY = t.clientY;
-      cursor.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-    };
-    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    animate();
 
-    // cleanup
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mousedown", addDragging);
-      window.removeEventListener("mouseup", removeDragging);
-      window.removeEventListener("touchmove", handleTouchMove);
-      // remove elementos criados (opcionalmente)
-      // cursor.remove(); outline.remove();
-      document.documentElement.style.cursor = ""; // restaura cursor nativo
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseover", handleMouseEnter);
+      document.removeEventListener("mouseout", handleMouseLeave);
+      document.body.removeChild(cursor);
+      document.body.removeChild(cursorOutline);
     };
   }, []);
 }

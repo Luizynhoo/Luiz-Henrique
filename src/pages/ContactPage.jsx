@@ -1,7 +1,7 @@
-import "../../styles/sections/ContactSection.css";
 import { Mail, Phone, Linkedin, Github } from "lucide-react";
+import "../styles/sections/ContactSection.css";
 
-const ContactSection = () => {
+const ContactPage = () => {
     return (
         <section id="contato" className="section contact-section">
             <h2 className="contact-title">Contatos</h2>
@@ -55,4 +55,4 @@ const ContactSection = () => {
     );
 };
 
-export default ContactSection;
+export default ContactPage;

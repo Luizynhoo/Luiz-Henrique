@@ -11,50 +11,36 @@ html {
   cursor: none !important;
 }
 
-
 body {
   background: linear-gradient(135deg, #383838, #000000);
   color: var(--cor2-);
   font-family: "Sora", sans-serif;
   font-weight: 400;
   font-style: normal;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .app-container {
-  height: 100vh;
+  max-height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.horizontal-container {
-  display: flex;
-  height: 73vh;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+.page-container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
-.horizontal-container>section {
-  min-width: 100vw;
-  height: 75vh;
-  scroll-snap-align: start;
+.page-container>* {
+  position: absolute;
+  min-height: 74vh;
+  width: 100%;
   padding: 2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.horizontal-container::-webkit-scrollbar {
-  display: none;
-  height: 12px;
-}
-
-.horizontal-container::-webkit-scrollbar-thumb {
-  background: var(--cor1-);
-  border-radius: 6px;
-  box-shadow: 0 0 10px var(--cor1-);
 }
 
 /* Cursor principal */
@@ -104,25 +90,25 @@ button:hover~.cursor,
 }
 
 .scroll-hint {
-    position: absolute;
-    top: 140px;
-    right: 40px;
-    color: var(--cor1-);
-    text-decoration: none;
-    opacity: 0;
-    font-size: 1rem;
-    animation: blink 2s infinite;
-    cursor: pointer;
+  position: absolute;
+  top: 140px;
+  right: 40px;
+  color: var(--cor1-);
+  text-decoration: none;
+  opacity: 0;
+  font-size: 1rem;
+  animation: blink 2s infinite;
+  cursor: pointer;
 }
 
 @keyframes blink {
 
-    0%,
-    100% {
-        opacity: 0.7;
-    }
+  0%,
+  100% {
+    opacity: 0.7;
+  }
 
-    50% {
-        opacity: 0.3;
-    }
+  50% {
+    opacity: 0.3;
+  }
 }

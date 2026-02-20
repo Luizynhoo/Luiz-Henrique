@@ -1,10 +1,16 @@
-import { act, useState } from "react";
-import { skillsData, fullSkillData } from "../../data/skills";
-import "../../styles/sections/skillsSection.css";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { skillsData, fullSkillData } from "../data/skills";
+import "../styles/sections/skillsSection.css";
 
-const SkillsSection = ({ goToNextSection }) => {
+const SkillsPage = () => {
+    const navigate = useNavigate();
     const [activeGroup, setActiveGroup] = useState("skills-code-craft");
     const [activeCategory, setActiveCategory] = useState(null);
+
+    const handleNextClick = () => {
+        navigate('/projetos');
+    };
 
     const selectedGroup = fullSkillData.find(
         (g) => g.id === activeGroup
@@ -91,11 +97,11 @@ const SkillsSection = ({ goToNextSection }) => {
 
             </div>
 
-            <div className="scroll-hint" onClick={goToNextSection}>
+            <div className="scroll-hint" onClick={handleNextClick}>
                 → Proxima Sessão
             </div>
         </section>
     );
 };
 
-export default SkillsSection;
+export default SkillsPage;
