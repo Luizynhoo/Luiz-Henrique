@@ -17,7 +17,7 @@ body {
   font-family: "Sora", sans-serif;
   font-weight: 400;
   font-style: normal;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .app-container {
@@ -110,5 +110,46 @@ button:hover~.cursor,
 
   50% {
     opacity: 0.3;
+  }
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  html {
+    cursor: auto !important;
+  }
+
+  body {
+    overflow: auto;
+  }
+
+  .app-container {
+    max-height: 100%;
+  }
+
+  .page-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .page-container>* {
+    position: relative !important;
+    min-height: auto;
+    width: 100%;
+    padding: 1.5rem 1rem !important;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  /* Hide custom cursor on mobile */
+  .cursor,
+  .cursor-outline {
+    display: none;
+  }
+
+  .scroll-hint {
+    display: none;
   }
 }

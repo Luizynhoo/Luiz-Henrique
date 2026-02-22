@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion";
 import { skillsData, fullSkillData } from "../data/skills";
 import "../styles/sections/skillsSection.css";
+import {
+    pageVariants,
+    listContainer,
+    listItem,
+    titleZoom,
+    fadeInUp,
+} from "../utils/Animation/homeAnimations";
 
 const SkillsPage = () => {
     const navigate = useNavigate();
@@ -21,10 +29,22 @@ const SkillsPage = () => {
         : selectedGroup.items;
 
     return (
-        <section id="skills" className="skills-section">
+        <motion.section
+            id="skills"
+            className="skills-section"
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+        >
             <div className="skills-layout">
 
-                <aside className="skills-toc">
+                <motion.aside
+                    className="skills-toc"
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.7 }}
+                >
                     <ul>
                         {skillsData.map((group) => (
                             <li key={group.id} className="has-sub">
@@ -72,15 +92,38 @@ const SkillsPage = () => {
                             </li>
                         ))}
                     </ul>
-                </aside>
+                </motion.aside>
 
-                <div className={`skills-content ${activeGroup === "skills-code-craft" ? "theme-blue" : "theme-purple"
-                    }`}>
-                    <h2>{selectedGroup.title}</h2>
+                <motion.div
+                    className={`skills-content ${activeGroup === "skills-code-craft" ? "theme-blue" : "theme-purple"
+                        }`}
+                    key={`content-${activeGroup}`}
+                    initial={{ x: 50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.7 }}
+                >
+                    <motion.h2
+                        key={`title-${selectedGroup.id}`}
+                        variants={fadeInUp}
+                        initial="hidden"
+                        animate="show"
+                    >
+                        {selectedGroup.title}
+                    </motion.h2>
 
-                    <div className="skill-items">
+                    <motion.div
+                        key={`${activeGroup}-${activeCategory}`}
+                        className="skill-items"
+                        variants={listContainer}
+                        initial="hidden"
+                        animate="show"
+                    >
                         {visibleCategories.map((item) => (
-                            <div key={item.category} className="skill-category">
+                            <motion.div
+                                key={item.category}
+                                className="skill-category"
+                                variants={listItem}
+                            >
 
                                 <h3>{item.category}</h3>
 
@@ -90,17 +133,26 @@ const SkillsPage = () => {
                                     ))}
                                 </ul>
 
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
             </div>
 
-            <div className="scroll-hint" onClick={handleNextClick}>
+            <motion.div
+                className="scroll-hint"
+                onClick={handleNextClick}
+                animate={{ y: [0, -8, 0] }}
+                transition={{
+                    repeat: Infinity,
+                    duration: 1.5,
+                    ease: "easeInOut",
+                }}
+            >
                 → Proxima Sessão
-            </div>
-        </section>
+            </motion.div>
+        </motion.section>
     );
 };
 

@@ -6,9 +6,12 @@ import { motion } from "framer-motion";
 import {
   pageVariants,
   containerVariants,
-  textReveal,
+  textRevealUp,
+  titleZoom,
   imageReveal,
   buttonReveal,
+  buttonHover,
+  buttonTap,
 } from "../utils/Animation/homeAnimations";
 
 const HomePage = () => {
@@ -35,21 +38,21 @@ const HomePage = () => {
       >
         <motion.p
           className="highlight-apresentacao"
-          variants={textReveal}
+          variants={textRevealUp}
         >
           SYSTEM INITIALIZED...
         </motion.p>
 
         <motion.p
           className="highlight"
-          variants={textReveal}
+          variants={titleZoom}
         >
           Luiz Henrique
         </motion.p>
 
         <motion.h1
           className="highlight-Dev"
-          variants={textReveal}
+          variants={titleZoom}
         >
           <ReactTyped
             strings={["Front-End Developer", "UI Engineer", "Creative Coder"]}
@@ -61,20 +64,32 @@ const HomePage = () => {
 
         <motion.div
           className="home-buttons"
-          variants={buttonReveal}
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
         >
-          <button className="btn-primary">
+          <motion.button
+            className="btn-primary"
+            variants={buttonReveal}
+            whileHover={buttonHover}
+            whileTap={buttonTap}
+          >
             <a
               href="mailto:lhenrique1804@gmail.com"
               style={{ color: "inherit", textDecoration: "none" }}
             >
               Entrar em Contato
             </a>
-          </button>
+          </motion.button>
 
-          <button className="btn-secondary">
+          <motion.button
+            className="btn-secondary"
+            variants={buttonReveal}
+            whileHover={buttonHover}
+            whileTap={buttonTap}
+          >
             Download CV
-          </button>
+          </motion.button>
         </motion.div>
       </motion.div>
 
@@ -99,6 +114,7 @@ const HomePage = () => {
         transition={{
           repeat: Infinity,
           duration: 1.5,
+          ease: "easeInOut",
         }}
       >
         → PRÓXIMA SESSÃO

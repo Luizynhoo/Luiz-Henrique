@@ -1,6 +1,6 @@
 .about-section {
   width: 100%;
-  min-height: 80vh;
+  max-height: 80vh;
   padding: 8rem 5%;
   display: flex;
   align-items: center;
@@ -77,4 +77,78 @@
   line-height: 1.6;
   color: #ddd;
   font-weight: 500;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .about-section {
+    width: 100%;
+    max-height: auto;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+
+  .main-about {
+    width: 100%;
+    order: 2;
+  }
+
+  .xp-container {
+    background: rgba(30, 30, 35, 0.6);
+    padding: 1.5rem 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 25px rgba(0, 130, 255, 0.3);
+  }
+
+  .stat-block {
+    flex: 1;
+    text-align: center;
+  }
+
+  .xp-container p {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .xp-container span {
+    font-size: 0.8rem;
+  }
+
+  .img-container {
+    order: 1;
+  }
+
+  .img-container img {
+    width: 200px;
+    height: 300px;
+  }
+
+  .tex-conteiner {
+    max-width: 100%;
+    text-align: center;
+    order: 3;
+  }
+
+  .tex-conteiner h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tex-conteiner h2::after {
+    width: 80px;
+  }
+
+  .tex-conteiner p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 }

@@ -4,6 +4,16 @@ import imgAbout from "../assets/img.jpg";
 import { infoAbout } from "../data/about";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import {
+  pageVariants,
+  slideInLeft,
+  slideInRight,
+  imageReveal,
+  statBlock,
+  containerVariants,
+  textRevealUp,
+  fadeInUp,
+} from "../utils/Animation/homeAnimations";
 
 const AboutPage = () => {
   const navigate = useNavigate();
@@ -53,40 +63,57 @@ const AboutPage = () => {
     <motion.section
       className="about-section"
       id="sobre"
-      initial={{ opacity: 0, y: 60 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -60 }}
-      transition={{ duration: 0.7 }}
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
     >
       <motion.div
         className="main-about"
-        initial={{ x: -80, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        variants={slideInLeft}
+        initial="hidden"
+        animate="show"
       >
-        <div className="xp-container">
-          <div className="stat-block">
+        <motion.div
+          className="xp-container"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.div
+            className="stat-block"
+            variants={statBlock}
+            whileHover={{ scale: 1.05 }}
+          >
             <p>{xp}+</p>
             <span>Anos de Experiência</span>
-          </div>
+          </motion.div>
 
-          <div className="stat-block">
+          <motion.div
+            className="stat-block"
+            variants={statBlock}
+            whileHover={{ scale: 1.05 }}
+          >
             <p>{projects}+</p>
             <span>Projetos Completos</span>
-          </div>
+          </motion.div>
 
-          <div className="stat-block">
+          <motion.div
+            className="stat-block"
+            variants={statBlock}
+            whileHover={{ scale: 1.05 }}
+          >
             <p>{skills}+</p>
             <span>Skills</span>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </motion.div>
 
       <motion.div
         className="img-container"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1 }}
+        variants={imageReveal}
+        initial="hidden"
+        animate="show"
         whileHover={{ scale: 1.05 }}
       >
         <div className="img-glow"></div>
@@ -95,19 +122,23 @@ const AboutPage = () => {
 
       <motion.div
         className="tex-conteiner"
-        initial={{ x: 80, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        variants={slideInRight}
+        initial="hidden"
+        animate="show"
       >
-        <h2>Sobre Mim</h2>
-        <p>{infoAbout.textAbout}</p>
+        <motion.h2 variants={fadeInUp}>Sobre Mim</motion.h2>
+        <motion.p variants={fadeInUp}>{infoAbout.textAbout}</motion.p>
       </motion.div>
 
       <motion.div
         className="scroll-hint"
         onClick={handleNextClick}
         animate={{ y: [0, -8, 0] }}
-        transition={{ repeat: Infinity, duration: 1.5 }}
+        transition={{
+          repeat: Infinity,
+          duration: 1.5,
+          ease: "easeInOut",
+        }}
       >
         → PRÓXIMA SESSÃO
       </motion.div>

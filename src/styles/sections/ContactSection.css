@@ -1,5 +1,5 @@
 .contact-section {
-    height: 100vh;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,5 +109,59 @@
 .contact-card span {
     font-size: 14px;
     color: #a0a0a0;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .contact-section {
+        max-height: auto;
+        padding: 1.5rem 0;
+    }
+
+    .contact-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem;
+        margin: 0 1rem;
+        border-radius: 15px;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+        justify-items: stretch;
+    }
+
+    .contact-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem 1rem;
+    }
+
+    .contact-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 1rem;
+    }
+
+    .contact-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .contact-card h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-card span {
+        font-size: 0.8rem;
+    }
 }
 
