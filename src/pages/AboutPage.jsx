@@ -1,26 +1,27 @@
 import { useNavigate } from "react-router-dom";
+import { useRef, useEffect, useState } from "react";
 import "../styles/sections/aboutSection.css";
 import imgAbout from "../assets/img.jpg";
 import { infoAbout } from "../data/about";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import gsap from 'gsap';
 import {
-  pageVariants,
-  slideInLeft,
-  slideInRight,
-  imageReveal,
-  statBlock,
-  containerVariants,
-  textRevealUp,
-  fadeInUp,
-} from "../utils/Animation/homeAnimations";
+  createPageTransition,
+  createSlideInLeft,
+  createSlideInRight,
+  createImageReveal,
+  createStatBlock,
+  createFadeInUp,
+  createFloat,
+} from "../utils/Animation/gsapAnimations";
 
 const AboutPage = () => {
   const navigate = useNavigate();
+  const sectionRef = useRef(null);
+  const mainAboutRef = useRef(null);
+  const imgContainerRef = useRef(null);
+  const textContainerRef = useRef(null);
+  const statRefs = [useRef(null), useRef(null), useRef(null)];
 
-  const handleNextClick = () => {
-    navigate("/skills");
-  };
   const xpTarget = parseInt(infoAbout.xp);
   const projectsTarget = parseInt(infoAbout.projetos);
   const skillsTarget = parseInt(infoAbout.skills);
@@ -59,90 +60,122 @@ const AboutPage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (sectionRef.current) {
+      createPageTransition(sectionRef.current, "forward");
+    }
+
+    if (mainAboutRef.current) {
+      createSlideInLeft(mainAboutRef.current, 0.2);
+    }
+
+    const timeline = gsap.timeline({ delay: 0.5 });
+    statRefs.forEach((ref, index) => {
+      if (ref.current) {
+        gsap.set(ref.current, {
+          scale: 0.6,
+          opacity: 0,
+          rotate: -10,
+        });
+
+        timeline.to(
+          ref.current,
+          {
+            scale: 1,
+            opacity: 1,
+            rotate: 0,
+            duration: 0.8,
+            ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+          },
+          index * 0.2
+        );
+      }
+    });
+
+    if (imgContainerRef.current) {
+      createImageReveal(imgContainerRef.current, 0.3);
+    }
+
+    if (textContainerRef.current) {
+      createSlideInRight(textContainerRef.current, 0.2);
+    }
+
+    return () => {
+      gsap.killTweensOf([
+        mainAboutRef.current,
+        imgContainerRef.current,
+        textContainerRef.current,
+        ...statRefs.map(ref => ref.current),
+      ]);
+    };
+  }, []);
+
+  const handleStatHover = (ref) => {
+    if (ref.current) {
+      gsap.to(ref.current, {
+        scale: 1.05,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  const handleStatHoverOut = (ref) => {
+    if (ref.current) {
+      gsap.to(ref.current, {
+        scale: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  };
+
   return (
-    <motion.section
-      className="about-section"
-      id="sobre"
-      variants={pageVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-    >
-      <motion.div
-        className="main-about"
-        variants={slideInLeft}
-        initial="hidden"
-        animate="show"
-      >
-        <motion.div
-          className="xp-container"
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-        >
-          <motion.div
+    <section className="about-section" id="sobre" ref={sectionRef}>
+      <div className="main-about" ref={mainAboutRef}>
+        <div className="xp-container">
+          <div
             className="stat-block"
-            variants={statBlock}
-            whileHover={{ scale: 1.05 }}
+            ref={statRefs[0]}
+            onMouseEnter={() => handleStatHover(statRefs[0])}
+            onMouseLeave={() => handleStatHoverOut(statRefs[0])}
           >
             <p>{xp}+</p>
             <span>Anos de Experiência</span>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="stat-block"
-            variants={statBlock}
-            whileHover={{ scale: 1.05 }}
+            ref={statRefs[1]}
+            onMouseEnter={() => handleStatHover(statRefs[1])}
+            onMouseLeave={() => handleStatHoverOut(statRefs[1])}
           >
             <p>{projects}+</p>
             <span>Projetos Completos</span>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="stat-block"
-            variants={statBlock}
-            whileHover={{ scale: 1.05 }}
+            ref={statRefs[2]}
+            onMouseEnter={() => handleStatHover(statRefs[2])}
+            onMouseLeave={() => handleStatHoverOut(statRefs[2])}
           >
             <p>{skills}+</p>
             <span>Skills</span>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+          </div>
+        </div>
+      </div>
 
-      <motion.div
-        className="img-container"
-        variants={imageReveal}
-        initial="hidden"
-        animate="show"
-        whileHover={{ scale: 1.05 }}
-      >
+      <div className="img-container" ref={imgContainerRef}>
         <div className="img-glow"></div>
         <img src={imgAbout} alt="Dev foto" />
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="tex-conteiner"
-        variants={slideInRight}
-        initial="hidden"
-        animate="show"
-      >
-        <motion.h2 variants={fadeInUp}>Sobre Mim</motion.h2>
-        <motion.p variants={fadeInUp}>{infoAbout.textAbout}</motion.p>
-      </motion.div>
-
-      <motion.div
-        className="scroll-hint"
-        onClick={handleNextClick}
-        animate={{ y: [0, -8, 0] }}
-        transition={{
-          repeat: Infinity,
-          duration: 1.5,
-          ease: "easeInOut",
-        }}
-      >
-        → PRÓXIMA SESSÃO
-      </motion.div>
-    </motion.section>
+      <div className="tex-conteiner" ref={textContainerRef}>
+        <h2>Sobre Mim</h2>
+        <p>{infoAbout.textAbout}</p>
+      </div>
+    </section>
   );
 };
 

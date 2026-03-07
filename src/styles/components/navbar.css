@@ -4,6 +4,14 @@
     z-index: 1000;
 }
 
+.nav-link{
+  background:none;
+  border:none;
+  color:inherit;
+  font:inherit;
+  cursor:pointer;
+}
+
 .nav-container {
     position: fixed;
     margin: 30px auto;

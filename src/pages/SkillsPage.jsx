@@ -1,24 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import { motion } from "framer-motion";
+import gsap from 'gsap';
 import { skillsData, fullSkillData } from "../data/skills";
 import "../styles/sections/skillsSection.css";
 import {
-    pageVariants,
-    listContainer,
-    listItem,
-    titleZoom,
-    fadeInUp,
-} from "../utils/Animation/homeAnimations";
+    createPageTransition,
+    createFadeInUp,
+    createFloat,
+} from "../utils/Animation/gsapAnimations";
 
 const SkillsPage = () => {
     const navigate = useNavigate();
     const [activeGroup, setActiveGroup] = useState("skills-code-craft");
     const [activeCategory, setActiveCategory] = useState(null);
-
-    const handleNextClick = () => {
-        navigate('/projetos');
-    };
+    const sectionRef = useRef(null);
+    const asideRef = useRef(null);
+    const contentRef = useRef(null);
 
     const selectedGroup = fullSkillData.find(
         (g) => g.id === activeGroup
@@ -28,27 +25,68 @@ const SkillsPage = () => {
         ? selectedGroup.items.filter(item => item.category === activeCategory)
         : selectedGroup.items;
 
-    return (
-        <motion.section
-            id="skills"
-            className="skills-section"
-            variants={pageVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-        >
-            <div className="skills-layout">
+    useEffect(() => {
+        if (sectionRef.current) {
+            createPageTransition(sectionRef.current, "forward");
+        }
 
-                <motion.aside
-                    className="skills-toc"
-                    initial={{ x: -50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.7 }}
-                >
+        if (asideRef.current) {
+            gsap.set(asideRef.current, { x: -50, opacity: 0 });
+            gsap.to(asideRef.current, {
+                x: 0,
+                opacity: 1,
+                duration: 0.7,
+                ease: "power2.out",
+                delay: 0.3,
+            });
+        }
+
+        if (contentRef.current) {
+            gsap.set(contentRef.current, { x: 50, opacity: 0 });
+            gsap.to(contentRef.current, {
+                x: 0,
+                opacity: 1,
+                duration: 0.7,
+                ease: "power2.out",
+                delay: 0.3,
+            });
+        }
+
+        const skillItems = document.querySelectorAll('[data-skill-item]');
+        const timeline = gsap.timeline({ delay: 0.7 });
+
+        skillItems.forEach((item, index) => {
+            gsap.set(item, {
+                opacity: 0,
+                x: -40,
+                filter: 'blur(8px)',
+            });
+
+            timeline.to(
+                item,
+                {
+                    opacity: 1,
+                    x: 0,
+                    filter: 'blur(0px)',
+                    duration: 0.6,
+                    ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+                },
+                index * 0.08
+            );
+        });
+
+        return () => {
+            gsap.killTweensOf([asideRef.current, contentRef.current, ...skillItems]);
+        };
+    }, [activeGroup, activeCategory]);
+
+    return (
+        <section id="skills" className="skills-section" ref={sectionRef}>
+            <div className="skills-layout">
+                <aside className="skills-toc" ref={asideRef}>
                     <ul>
                         {skillsData.map((group) => (
                             <li key={group.id} className="has-sub">
-
                                 <div className="title">
                                     <a
                                         onClick={() => {
@@ -87,44 +125,31 @@ const SkillsPage = () => {
                                         </ul>
                                     </div>
                                 )}
-
-
                             </li>
                         ))}
                     </ul>
-                </motion.aside>
+                </aside>
 
-                <motion.div
+                <div
                     className={`skills-content ${activeGroup === "skills-code-craft" ? "theme-blue" : "theme-purple"
                         }`}
+                    ref={contentRef}
                     key={`content-${activeGroup}`}
-                    initial={{ x: 50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.7 }}
                 >
-                    <motion.h2
-                        key={`title-${selectedGroup.id}`}
-                        variants={fadeInUp}
-                        initial="hidden"
-                        animate="show"
-                    >
+                    <h2 key={`title-${selectedGroup.id}`}>
                         {selectedGroup.title}
-                    </motion.h2>
+                    </h2>
 
-                    <motion.div
+                    <div
                         key={`${activeGroup}-${activeCategory}`}
                         className="skill-items"
-                        variants={listContainer}
-                        initial="hidden"
-                        animate="show"
                     >
                         {visibleCategories.map((item) => (
-                            <motion.div
+                            <div
                                 key={item.category}
                                 className="skill-category"
-                                variants={listItem}
+                                data-skill-item
                             >
-
                                 <h3>{item.category}</h3>
 
                                 <ul>
@@ -132,27 +157,13 @@ const SkillsPage = () => {
                                         <li key={skill.id}>{skill.label}</li>
                                     ))}
                                 </ul>
-
-                            </motion.div>
+                            </div>
                         ))}
-                    </motion.div>
-                </motion.div>
-
+                    </div>
+                </div>
             </div>
 
-            <motion.div
-                className="scroll-hint"
-                onClick={handleNextClick}
-                animate={{ y: [0, -8, 0] }}
-                transition={{
-                    repeat: Infinity,
-                    duration: 1.5,
-                    ease: "easeInOut",
-                }}
-            >
-                → Proxima Sessão
-            </motion.div>
-        </motion.section>
+        </section>
     );
 };
 

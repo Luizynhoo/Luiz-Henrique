@@ -1,103 +1,113 @@
 import { Mail, Phone, Linkedin, Github } from "lucide-react";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from 'gsap';
+import { socialLinks } from "../data/socialLinks";
 import "../styles/sections/ContactSection.css";
 import {
-  pageVariants,
-  cardReveal,
-  cardHover,
-  containerVariants,
-  titleZoom,
-  fadeInUp,
-} from "../utils/Animation/homeAnimations";
+  createPageTransition,
+  createTitleZoom,
+  createCardReveal,
+  createCardHover,
+  createCardHoverOut,
+} from "../utils/Animation/gsapAnimations";
 
 const ContactPage = () => {
+    const sectionRef = useRef(null);
+    const titleRef = useRef(null);
+    const cardRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+
+    useEffect(() => {
+        if (sectionRef.current) {
+            createPageTransition(sectionRef.current, "forward");
+        }
+
+        if (titleRef.current) {
+            createTitleZoom(titleRef.current, 0.3);
+        }
+        
+        const timeline = gsap.timeline({ delay: 0.5 });
+        cardRefs.forEach((ref, index) => {
+            if (ref.current) {
+                gsap.set(ref.current, {
+                    y: 80,
+                    opacity: 0,
+                    scale: 0.85,
+                    filter: 'blur(10px)',
+                });
+
+                timeline.to(
+                    ref.current,
+                    {
+                        y: 0,
+                        opacity: 1,
+                        scale: 1,
+                        filter: 'blur(0px)',
+                        duration: 0.7,
+                        ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+                    },
+                    index * 0.15
+                );
+            }
+        });
+
+        return () => {
+            gsap.killTweensOf([titleRef.current, ...cardRefs.map(ref => ref.current)]);
+        };
+    }, []);
+
+    const handleCardHover = (ref) => {
+        if (ref.current) {
+            createCardHover(ref.current);
+        }
+    };
+
+    const handleCardHoverOut = (ref) => {
+        if (ref.current) {
+            createCardHoverOut(ref.current);
+        }
+    };
+
+    const contactLinkss = socialLinks;
+
     return (
-        <motion.section
+        <section
             id="contato"
             className="section contact-section"
-            variants={pageVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            ref={sectionRef}
         >
-            <motion.h2
+            <h2
                 className="contact-title"
-                variants={titleZoom}
-                initial="hidden"
-                animate="show"
+                ref={titleRef}
             >
                 Contatos
-            </motion.h2>
+            </h2>
 
             <div className="contact-container">
-                <motion.div
-                    className="contact-grid"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="show"
-                >
-                    <motion.a
-                        href="mailto:lhenrique1804@gmail.com"
-                        className="contact-card"
-                        variants={cardReveal}
-                        whileHover={cardHover}
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        <div className="contact-icon">
-                            <Mail />
-                        </div>
-                        <h3>E-mail</h3>
-                        <span>lhenrique1804@gmail.com</span>
-                    </motion.a>
-
-                    <motion.a
-                        href="tel:+5511940056624"
-                        className="contact-card"
-                        variants={cardReveal}
-                        whileHover={cardHover}
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        <div className="contact-icon">
-                            <Phone />
-                        </div>
-                        <h3>Telefone</h3>
-                        <span>(11) 94005-6624</span>
-                    </motion.a>
-
-                    <motion.a
-                        href="https://www.linkedin.com/in/luiz-henrique-silva-costa-8a683b222/"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="contact-card"
-                        variants={cardReveal}
-                        whileHover={cardHover}
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        <div className="contact-icon">
-                            <Linkedin />
-                        </div>
-                        <h3>LinkedIn</h3>
-                        <span>@luiz-henrique-silva-costa</span>
-                    </motion.a>
-
-                    <motion.a
-                        href="https://github.com/Luizynhoo"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="contact-card"
-                        variants={cardReveal}
-                        whileHover={cardHover}
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        <div className="contact-icon">
-                            <Github />
-                        </div>
-                        <h3>Github</h3>
-                        <span>@Luizynhoo</span>
-                    </motion.a>
-                </motion.div>
+                <div className="contact-grid">
+                    {contactLinkss.map((link, index) => {
+                        const IconComponent = link.icon;
+                        return (
+                            <a
+                                key={index}
+                                href={link.href}
+                                className="contact-card"
+                                ref={cardRefs[index]}
+                                target={link.target}
+                                rel={link.target ? "noreferrer" : undefined}
+                                onMouseEnter={() => handleCardHover(cardRefs[index])}
+                                onMouseLeave={() => handleCardHoverOut(cardRefs[index])}
+                            >
+                                <div className="contact-icon">
+                                    <IconComponent />
+                                </div>
+                                <h3>{link.title}</h3>
+                                <span>{link.text}</span>
+                            </a>
+                        );
+                    })}
+                </div>
             </div>
-        </motion.section>
+        </section>
     );
 };
 

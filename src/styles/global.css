@@ -17,11 +17,10 @@ body {
   font-family: "Sora", sans-serif;
   font-weight: 400;
   font-style: normal;
-  overflow: hidden;
 }
 
 .app-container {
-  max-height: 100vh;
+  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -35,15 +34,13 @@ body {
 }
 
 .page-container>* {
-  position: absolute;
-  min-height: 74vh;
+  min-height: 70vh;
   width: 100%;
   padding: 2rem;
   display: flex;
   align-items: center;
 }
 
-/* Cursor principal */
 .cursor {
   position: fixed;
   width: 9px;
@@ -57,7 +54,6 @@ body {
   box-shadow: 0 0 6px var(--cor1-), 0 0 12px #00d9ff66;
 }
 
-/* Anel externo */
 .cursor-outline {
   position: fixed;
   width: 36px;
@@ -71,7 +67,6 @@ body {
   box-shadow: 0 0 10px rgba(0, 217, 255, 0.15), 0 0 24px rgba(39, 140, 255, 0.12);
 }
 
-/* Glow Neon */
 .dragging-cursor .cursor-outline {
   transform: translate(-50%, -50%) scale(0.6);
   background: rgba(0, 217, 255, 0.06);
@@ -89,38 +84,26 @@ button:hover~.cursor,
   box-shadow: 0 0 12px #fff, 0 0 24px #00d9ff66;
 }
 
-.scroll-hint {
-  position: absolute;
-  top: 140px;
-  right: 40px;
-  color: var(--cor1-);
-  text-decoration: none;
-  opacity: 0;
-  font-size: 1rem;
-  animation: blink 2s infinite;
-  cursor: pointer;
-}
-
-@keyframes blink {
-
-  0%,
-  100% {
-    opacity: 0.7;
-  }
-
-  50% {
-    opacity: 0.3;
-  }
-}
-
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
+  
   html {
     cursor: auto !important;
   }
 
   body {
     overflow: auto;
+  }
+
+  .mobile-scroll-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-scroll-container section {
+    min-height: 100vh;
+    padding: 80px 20px;
   }
 
   .app-container {
@@ -143,13 +126,31 @@ button:hover~.cursor,
     justify-content: flex-start;
   }
 
-  /* Hide custom cursor on mobile */
   .cursor,
   .cursor-outline {
     display: none;
   }
+}
 
-  .scroll-hint {
-    display: none;
-  }
+.page-container,
+.card,
+button,
+img {
+  will-change: transform, opacity;
+}
+
+.curtain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  background: #0f172a;
+
+  transform: scaleY(0);
+  transform-origin: bottom;
+
+  z-index: 9999;
+  pointer-events: none;
 }

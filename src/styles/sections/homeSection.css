@@ -3,6 +3,8 @@
     gap: 4rem;
     padding: 0 8rem;
     justify-content: center;
+    min-height: 100vh; 
+    display: flex; 
 }
 
 .home-content {
