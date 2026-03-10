@@ -113,6 +113,12 @@
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
+
+    #contato {
+        padding: 1rem 1rem;
+        background: none;
+    }
+
     .contact-section {
         max-height: auto;
         padding: 1.5rem 0;

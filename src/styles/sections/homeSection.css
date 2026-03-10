@@ -3,8 +3,8 @@
     gap: 4rem;
     padding: 0 8rem;
     justify-content: center;
-    min-height: 100vh; 
-    display: flex; 
+    min-height: 100vh;
+    display: flex;
 }
 
 .home-content {
@@ -134,11 +134,16 @@
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
+
+    #home {
+        padding: 3rem 1rem;
+    }
+
     .section-home {
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 2rem;
-        padding: 1rem;
         justify-content: flex-start;
+        align-items: center;
     }
 
     .home-content {
@@ -157,7 +162,7 @@
     }
 
     .highlight {
-        font-size: 1.8rem;
+        display: none;
     }
 
     .highlight-Dev {

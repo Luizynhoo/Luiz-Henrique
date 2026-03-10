@@ -81,20 +81,25 @@
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
+
+  #sobre{
+    padding: 1rem 1rem ;
+  }
+
   .about-section {
     width: 100%;
     max-height: auto;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: flex-start;
-    gap: 1.5rem;
+    margin-top: 8rem;
   }
 
   .main-about {
     width: 100%;
-    order: 2;
+    order: 1;
   }
 
   .xp-container {

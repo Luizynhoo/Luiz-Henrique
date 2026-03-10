@@ -86,7 +86,7 @@ button:hover~.cursor,
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
-  
+
   html {
     cursor: auto !important;
   }
@@ -102,7 +102,7 @@ button:hover~.cursor,
   }
 
   .mobile-scroll-container section {
-    min-height: 100vh;
+    min-height: 70vh;
     padding: 80px 20px;
   }
 
@@ -130,6 +130,19 @@ button:hover~.cursor,
   .cursor-outline {
     display: none;
   }
+
+  #projetos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .projetos-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 40px 0 20px 0;
+  }
 }
 
 .page-container,
@@ -153,4 +166,12 @@ img {
 
   z-index: 9999;
   pointer-events: none;
+}
+
+@media (max-width:768px) {
+
+  section#footer {
+    min-height: auto;
+  }
+
 }

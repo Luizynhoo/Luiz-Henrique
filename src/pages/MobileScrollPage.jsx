@@ -5,6 +5,9 @@ import AboutPage from "./AboutPage";
 import SkillsPage from "./SkillsPage";
 import ProjectsPage from "./ProjectsPage";
 import ContactPage from "./ContactPage";
+import MobileFooter from "../components/layout/footer";
+
+import "../styles/global.css";
 
 const MobileScrollPage = () => {
 
@@ -26,12 +29,20 @@ const MobileScrollPage = () => {
                 <SkillsPage />
             </section>
 
+
+
             <section id="projetos">
+                <h2 className="projetos-title">Meus Projetos</h2>
+
                 <ProjectsPage />
             </section>
 
             <section id="contato">
                 <ContactPage />
+            </section>
+
+            <section id="footer">
+                <MobileFooter />
             </section>
 
         </div>
