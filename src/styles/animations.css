@@ -1,6 +1,4 @@
-/* =========================
-   GLOBAL ANIMATION HELPERS
-========================= */
+/* GLOBAL ANIMATION HELPERS */
 
 :root{
   --ease-premium:cubic-bezier(0.23,1,0.320,1);
@@ -24,9 +22,7 @@
   overflow:hidden;
 }
 
-/* =========================
-   CURTAIN PAGE TRANSITION
-========================= */
+/* CURTAIN PAGE TRANSITION */
 
 .curtain{
   position:fixed;
@@ -54,9 +50,7 @@
 }
 
 
-/* =========================
-   PAGE CONTAINER
-========================= */
+/* PAGE CONTAINER */
 
 .app-container{
   position:relative;
@@ -69,9 +63,7 @@
   transform-origin:center;
 }
 
-/* =========================
-   CARD EFFECTS
-========================= */
+/* CARD EFFECTS */
 
 .project-card{
   position:relative;
@@ -98,9 +90,7 @@
   transform:translateZ(0);
 }
 
-/* =========================
-   BUTTON EFFECTS
-========================= */
+/* BUTTON EFFECTS */
 
 .btn{
   transition:
@@ -115,9 +105,7 @@
     0 10px 30px rgba(0,0,0,0.25);
 }
 
-/* =========================
-   TEXT REVEAL HELPERS
-========================= */
+/* TEXT REVEAL HELPERS */
 
 .text-reveal{
   overflow:hidden;
@@ -127,9 +115,7 @@
   display:inline-block;
 }
 
-/* =========================
-   IMAGE DEPTH EFFECT
-========================= */
+/* IMAGE DEPTH EFFECT */
 
 .image-depth{
   transform-style:preserve-3d;
@@ -140,35 +126,27 @@
   transform:scale(1.04) rotateZ(0.5deg);
 }
 
-/* =========================
-   FLOAT ELEMENTS
-========================= */
+/* FLOAT ELEMENTS */
 
 .float-element{
   will-change:transform;
 }
 
-/* =========================
-   PARALLAX LAYER
-========================= */
+/* PARALLAX LAYER */
 
 .parallax-layer{
   will-change:transform;
   transform:translateZ(0);
 }
 
-/* =========================
-   SMOOTH PAGE RENDER
-========================= */
+/* SMOOTH PAGE RENDER */
 
 body{
   backface-visibility:hidden;
   transform-style:preserve-3d;
 }
 
-/* =========================
-   SCROLLBAR STYLING
-========================= */
+/* SCROLLBAR STYLING */
 
 ::-webkit-scrollbar{
   width:8px;

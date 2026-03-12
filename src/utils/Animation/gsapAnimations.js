@@ -3,26 +3,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ===== HELPER FUNCTION - REDUCES 40% CODE =====
-/**
- * Universal animation helper - combines gsap.set + gsap.to
- * @param {HTMLElement} element - Target element
- * @param {Object} fromVars - Initial state variables
- * @param {Object} toVars - Animation target variables
- * @returns {gsap.Tween} - GSAP tween object
- */
 const animate = (element, fromVars, toVars) => {
   if (!element) return;
   gsap.set(element, fromVars);
   return gsap.to(element, toVars);
 };
 
-// ===== EASE PRESETS - PREMIUM CURVES =====
 const premiumEase = 'cubic-bezier(0.23, 1, 0.320, 1)';
 const easeOut = 'power2.out';
 const easeInOut = 'power2.inOut';
 
-// ===== PAGE TRANSITIONS - PREMIUM =====
 export const createPageTransition = (element, direction = 'forward') => {
   if (!element) return;
 
@@ -58,7 +48,6 @@ export const createPageTransition = (element, direction = 'forward') => {
   return timeline;
 };
 
-// ===== TEXT REVEAL ANIMATIONS =====
 export const createTextReveal = (element, delay = 0) =>
   animate(element, { y: 100, opacity: 0, filter: 'blur(12px)' }, {
     y: 0,
@@ -79,7 +68,6 @@ export const createTextRevealUp = (element, delay = 0) =>
     delay,
   });
 
-// ===== SLIDE ANIMATIONS =====
 export const createSlideInLeft = (element, delay = 0) =>
   animate(element, { x: -120, opacity: 0, filter: 'blur(15px)' }, {
     x: 0,
@@ -100,7 +88,6 @@ export const createSlideInRight = (element, delay = 0) =>
     delay,
   });
 
-// ===== IMAGE ANIMATIONS =====
 export const createImageReveal = (element, delay = 0) =>
   animate(element, { scale: 0.7, opacity: 0, rotate: -8, filter: 'blur(15px)' }, {
     scale: 1,
@@ -112,7 +99,6 @@ export const createImageReveal = (element, delay = 0) =>
     delay,
   });
 
-// ===== BUTTON ANIMATIONS =====
 export const createButtonReveal = (element, delay = 0) =>
   animate(element, { y: 50, opacity: 0, scale: 0.8 }, {
     y: 0,
@@ -155,7 +141,6 @@ export const createButtonTap = (element) => {
   });
 };
 
-// ===== CARD ANIMATIONS =====
 export const createCardReveal = (element, delay = 0) =>
   animate(element, { y: 80, opacity: 0, scale: 0.85, filter: 'blur(10px)' }, {
     y: 0,
@@ -190,7 +175,6 @@ export const createCardHoverOut = (element) => {
   });
 };
 
-// ===== STAT BLOCK ANIMATIONS =====
 export const createStatBlock = (element, delay = 0) =>
   animate(element, { scale: 0.6, opacity: 0, rotate: -10 }, {
     scale: 1,
@@ -201,7 +185,6 @@ export const createStatBlock = (element, delay = 0) =>
     delay,
   });
 
-// ===== TITLE ZOOM ANIMATION =====
 export const createTitleZoom = (element, delay = 0) =>
   animate(element, { scale: 0.5, opacity: 0, filter: 'blur(20px)' }, {
     scale: 1,
@@ -212,7 +195,6 @@ export const createTitleZoom = (element, delay = 0) =>
     delay,
   });
 
-// ===== ROTATE REVEAL ANIMATION =====
 export const createRotateReveal = (element, delay = 0) =>
   animate(element, { opacity: 0, rotate: -90, scale: 0 }, {
     opacity: 1,
@@ -223,7 +205,6 @@ export const createRotateReveal = (element, delay = 0) =>
     delay,
   });
 
-// ===== FADE IN UP ANIMATION =====
 export const createFadeInUp = (element, delay = 0) =>
   animate(element, { opacity: 0, y: 40 }, {
     opacity: 1,
@@ -233,7 +214,6 @@ export const createFadeInUp = (element, delay = 0) =>
     delay,
   });
 
-// ===== STAGGER ANIMATIONS FOR LISTS =====
 export const createStaggerAnimation = (elements, delay = 0) => {
   if (!elements || elements.length === 0) return;
 
@@ -248,7 +228,6 @@ export const createStaggerAnimation = (elements, delay = 0) => {
   });
 };
 
-// ===== CONTINUOUS PULSE ANIMATION =====
 export const createPulse = (element, intensity = 1) => {
   if (!element) return;
   return gsap.to(element, {
@@ -260,7 +239,6 @@ export const createPulse = (element, intensity = 1) => {
   });
 };
 
-// ===== FLOAT ANIMATION =====
 export const createFloat = (element, distance = 10, duration = 3) => {
   if (!element) return;
   return gsap.to(element, {
@@ -272,13 +250,7 @@ export const createFloat = (element, distance = 10, duration = 3) => {
   });
 };
 
-// ===== PARALLAX WITH SCROLL TRIGGER - POWER ENHANCED =====
-/**
- * Create parallax effect using ScrollTrigger
- * @param {HTMLElement} element - Element to parallax
- * @param {Object} options - Configuration options
- * @returns {ScrollTrigger} - ScrollTrigger instance
- */
+
 export const createParallaxWithScrollTrigger = (element, options = {}) => {
   if (!element) return;
 
@@ -304,7 +276,6 @@ export const createParallaxWithScrollTrigger = (element, options = {}) => {
   });
 };
 
-// ===== ADVANCED PARALLAX - SMOOTH & RESPONSIVE =====
 export const createSmoothParallax = (element, intensity = 0.5) => {
   if (!element) return;
 
@@ -326,7 +297,6 @@ export const createSmoothParallax = (element, intensity = 0.5) => {
   });
 };
 
-// ===== ROTATE CONTINUOUS ANIMATION =====
 export const createRotate = (element, duration = 20) => {
   if (!element) return;
   return gsap.to(element, {
@@ -337,7 +307,6 @@ export const createRotate = (element, duration = 20) => {
   });
 };
 
-// ===== SCROLL REVEAL ANIMATION WITH SCROLL TRIGGER =====
 export const createScrollReveal = (element, options = {}) => {
   if (!element) return;
 
@@ -367,7 +336,6 @@ export const createScrollReveal = (element, options = {}) => {
   });
 };
 
-// ===== BATCH SCROLL ANIMATIONS =====
 export const createBatchScrollAnimation = (selector, options = {}) => {
   const {
     fromVars = { opacity: 0, y: 40 },
@@ -392,7 +360,6 @@ export const createBatchScrollAnimation = (selector, options = {}) => {
   });
 };
 
-// ===== CURTAIN PAGE TRANSITION =====
 export const curtainTransition = (callback) => {
   const tl = gsap.timeline();
 
@@ -428,7 +395,6 @@ export const curtainTransition = (callback) => {
     });
 };
 
-// ===== STAGGERED BATCH REVEAL =====
 export const createBatchReveal = (containerSelector, delay = 0) => {
   const container = document.querySelector(containerSelector);
   if (!container) return;
@@ -460,7 +426,6 @@ export const createBatchReveal = (containerSelector, delay = 0) => {
   return timeline;
 };
 
-// ===== CLEANUP FUNCTION =====
 export const killAllAnimations = (elements) => {
   if (Array.isArray(elements)) {
     elements.forEach((el) => {
@@ -471,7 +436,6 @@ export const killAllAnimations = (elements) => {
   }
 };
 
-// ===== CLEANUP SCROLL TRIGGERS =====
 export const killScrollTriggers = () => {
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 };

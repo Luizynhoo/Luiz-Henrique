@@ -84,7 +84,7 @@ button:hover~.cursor,
   box-shadow: 0 0 12px #fff, 0 0 24px #00d9ff66;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
 
   html {

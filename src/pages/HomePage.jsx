@@ -92,7 +92,7 @@ const HomePage = () => {
           </button>
 
           <a
-            href="/cv/Luiz-Henrique-Developer-CV.pdf"
+            href={`${import.meta.env.BASE_URL}/cv/Luiz-Henrique-Developer-CV.pdf`}
             download="Luiz-Henrique-Developer-CV.pdf"
             ref={botao2Ref}
             className="btn-secondary"

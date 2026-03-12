@@ -89,7 +89,13 @@
         inset 0 0 0 1px rgba(47, 128, 237, 0.4);
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 1440px) {
+        .projects-scroll-container {
+        max-height: 30rem;
+    }
+}
+
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
 
     #projects.section-projects {
