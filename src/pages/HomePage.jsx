@@ -16,6 +16,7 @@ import {
 } from "../utils/Animation/gsapAnimations";
 import { useGsapHover } from "../hooks/useGsapAnimation";
 
+
 const HomePage = () => {
   const navigate = useNavigate();
   const sectionRef = useRef(null);
@@ -25,7 +26,7 @@ const HomePage = () => {
   const botao1Ref = useRef(null);
   const botao2Ref = useRef(null);
   const photoRef = useRef(null);
-  
+
   const photoHover = useGsapHover({
     scale: 1.05,
     rotate: 1,
@@ -90,15 +91,17 @@ const HomePage = () => {
             </a>
           </button>
 
-          <button
+          <a
+            href="/cv/Luiz-Henrique-Developer-CV.pdf"
+            download="Luiz-Henrique-Developer-CV.pdf"
             ref={botao2Ref}
             className="btn-secondary"
             onMouseEnter={() => handleButtonHover(botao2Ref)}
             onMouseLeave={() => handleButtonHoverOut(botao2Ref)}
-            style={{ opacity: 1, visibility: 'visible' }}
+            style={{ opacity: 1, visibility: "visible" }}
           >
             Download CV
-          </button>
+          </a>
         </div>
       </div>
 

@@ -28,6 +28,36 @@ const Navbar = () => {
 
     }, [location.pathname]);
 
+    useEffect(() => {
+
+    if (!isMobile) return;
+
+    const sections = ["home", "sobre", "skills", "projetos", "contato"];
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+
+            });
+        },
+        {
+            threshold: 0.6
+        }
+    );
+
+    sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+
+}, [isMobile]);
+
     const handleNavigation = (path) => {
 
         if (path === location.pathname) return;

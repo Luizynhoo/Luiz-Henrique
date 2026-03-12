@@ -26,7 +26,6 @@
     transform: scale(1.12);
 }
 
-/* Overlay */
 .project-card .overlay {
     position: absolute;
     inset: 0;
@@ -52,7 +51,6 @@
     margin-bottom: 10px;
 }
 
-/* Tech badges */
 .project-card .techs {
     display: flex;
     gap: 8px;
@@ -68,7 +66,7 @@
     border: 1px solid rgba(39, 140, 255, 0.443);
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
     .project-card {
         position: relative;
@@ -109,14 +107,9 @@
         flex-direction: column;
         justify-content: flex-end;
         padding: 1.5rem;
-        opacity: 0;
+        opacity: 1;
         transition: opacity 0.35s ease;
     }
-
-    .project-card:hover .overlay {
-        opacity: 1;
-    }
-
     .project-card h3 {
         color: #fff;
         font-size: 1rem;
