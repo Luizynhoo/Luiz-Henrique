@@ -32,7 +32,7 @@ const Navbar = () => {
 
     if (!isMobile) return;
 
-    const sections = ["home", "sobre", "skills", "projetos", "contato"];
+    const sections = ["home", "sobre", "skills", "projects", "contato"];
 
     const observer = new IntersectionObserver(
         (entries) => {
