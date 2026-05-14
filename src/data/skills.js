@@ -30,10 +30,16 @@ export const fullSkillData = [
         skills: [
           { id: "skills-nodejs", label: "Node.js" },
           { id: "skills-python", label: "Python" },
+          { id: "skills-fastapi", label: "FastAPI" },
           { id: "skills-java", label: "Java" },
+          { id: "skills-rest", label: "API REST" },
+          { id: "skills-openrouter", label: "OpenRouter API" },
+          { id: "skills-llm", label: "LLM Integration" },
+          { id: "skills-prompt", label: "Prompt Engineering" },
           { id: "skills-mysql", label: "MySQL" },
           { id: "skills-mongodb", label: "MongoDB" },
           { id: "skills-firebase", label: "Firebase" },
+          { id: "skills-restapi", label: "API REST" },
         ],
       },
       {
@@ -61,13 +67,15 @@ export const fullSkillData = [
         skills: [
           { id: "skills-docker", label: "Docker" },
           { id: "skills-git", label: "Git" },
+          { id: "skills-github", label: "GitHub" },
+          { id: "skills-githubPages", label: "GitHub Pages" },
         ],
       },
       {
         category: "Design & UX",
         skills: [
           { id: "skills-figma", label: "Figma" },
-          { id: "skills-canva", label: "Canva" },
+          { id: "skills-ui", label: "UI/UX Design" },
         ],
       },
     ],
@@ -82,7 +90,7 @@ export const fullSkillData = [
         skills: [
           { id: "colaboracao-comunicacao", label: "Comunicação Efetiva" },
           { id: "colaboracao-equipe", label: "Trabalho em Equipe" },
-          { id: "liderança", label: "Lider de Equipe" },
+          { id: "liderança", label: "Liderança" },
         ],
       },
       {

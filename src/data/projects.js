@@ -7,6 +7,7 @@ import Github from "../assets/project/github.png";
 import DogStock from "../assets/project/dogstock.jpeg";
 import Azamara from "../assets/project/azamara.jpeg";
 import Rcorp from "../assets/project/rcorp.jpeg";
+import UnicidChat from "../assets/project/UnicidChat.png";
 
 export const projects = [
   {
@@ -115,5 +116,17 @@ export const projects = [
       "Website institucional desenvolvido para a Azamara Brasil, em parceria com a R11 Travel. A aplicação conta com uma landing page de alto impacto visual e um motor de busca que permite filtrar cruzeiros por destino, navio e data de saída. Os resultados são exibidos em uma página dedicada, com listagem detalhada das saídas, valores, duração e informações do itinerário, utilizando dados atualizados diariamente. O fluxo de conversão é realizado via contato por e-mail para solicitação de reserva. O projeto foi desenvolvido com Vite, JavaScript e CSS, priorizando performance, usabilidade e experiência do usuário.",
     github: "",
     live: "https://azamaracruises.com.br/",
+  },
+
+  {
+    id: 10,
+    title: "UNICID Chat Assistant",
+    image: UnicidChat,
+    date: "05/2026",
+    techs: ["React", "Vite", "FastAPI", "JavaScript", "CSS", "OpenRouter API"],
+    description:
+      "Assistente virtual acadêmico desenvolvido para a UNICID com foco em atendimento automatizado e centralização de informações institucionais. A aplicação permite que alunos realizem perguntas baseadas em documentos PDF enviados pelo painel administrativo, utilizando IA integrada via OpenRouter API. O sistema conta com chat em tempo real, feedback de respostas, agendamento de atendimento presencial, dashboard administrativo com métricas de uso, gerenciamento de PDFs e validações inteligentes de horários e limites de agendamento. O projeto foi desenvolvido utilizando React, Vite, FastAPI e CSS, priorizando experiência do usuário, organização administrativa e performance da aplicação.",
+    github: "https://github.com/Luizynhoo/Unicid-Chat",
+    live: "",
   },
 ];
